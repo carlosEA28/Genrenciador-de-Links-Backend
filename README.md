@@ -61,4 +61,6 @@ Inicie o servidor
 
 Backend: Spring Boot, Docker
 
+Banco de Dados: Postgres
+
 Cloud: Cloudinary
