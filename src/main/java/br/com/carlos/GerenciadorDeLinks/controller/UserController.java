@@ -23,6 +23,13 @@ public class UserController {
         return ResponseEntity.ok().body(newUser);
     }
 
+    @GetMapping("/{userId}")
+    public ResponseEntity<Object> getUserById(@PathVariable("userId") String userId) {
+        var user = userService.getUserById(userId);
+
+        return ResponseEntity.ok().body(user);
+    }
+
     @GetMapping("/links/{userId}")
     public ResponseEntity<List<LinkEntity>> getAllLinks(@Valid @PathVariable("userId") String userId) {
         var links = userService.getAllLinks(userId);

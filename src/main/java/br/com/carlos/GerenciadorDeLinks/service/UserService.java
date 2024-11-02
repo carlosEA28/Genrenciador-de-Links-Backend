@@ -5,7 +5,6 @@ import br.com.carlos.GerenciadorDeLinks.dto.UserDTO;
 import br.com.carlos.GerenciadorDeLinks.entity.LinkEntity;
 import br.com.carlos.GerenciadorDeLinks.entity.UserEntity;
 import br.com.carlos.GerenciadorDeLinks.exceptions.UserAlreadyExists;
-import br.com.carlos.GerenciadorDeLinks.exceptions.UserNotFound;
 import br.com.carlos.GerenciadorDeLinks.repository.UserRespoitory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -38,8 +37,15 @@ public class UserService {
     }
 
     public List<LinkEntity> getAllLinks(String userId) {
-      var userExists = userRespoitory.findById(UUID.fromString(userId));
-      return userExists.get().getLinks();
+        var userExists = userRespoitory.findById(UUID.fromString(userId));
+        return userExists.get().getLinks();
+    }
+
+    public Object getUserById(String userId) {
+
+        var id = UUID.fromString(userId);
+
+        return userRespoitory.findById(id);
     }
 
     public void updateUser(String userId, UpdateUserDTO dto) {

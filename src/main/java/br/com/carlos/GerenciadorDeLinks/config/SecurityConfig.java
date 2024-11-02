@@ -40,6 +40,7 @@ public class SecurityConfig {
                 .authorizeHttpRequests(authorize -> authorize
                         .requestMatchers(HttpMethod.POST, "/v1/user").permitAll()
                         .requestMatchers(HttpMethod.POST, "/login").permitAll()
+                        .requestMatchers(HttpMethod.POST, "/{userId}").authenticated()
                         .requestMatchers(HttpMethod.GET, "/v1/user/links/{userId}").authenticated()
                         .requestMatchers(HttpMethod.PUT, "/v1/user/{userId}").authenticated()
                         .requestMatchers(HttpMethod.POST, "/upload").authenticated()

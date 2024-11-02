@@ -38,7 +38,7 @@ public class TokenController {
         }
 
         var now = Instant.now();
-        var expiresIn = 300L;
+        var expiresIn = 7 * 24 * 60 * 60L;
         var claims = JwtClaimsSet.builder()
                 .issuer("user")
                 .subject(user.get().getUserId().toString())
